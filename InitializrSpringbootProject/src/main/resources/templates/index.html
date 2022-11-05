@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Estados pag principal</title>
+        <meta charset="UTF-8">
+ 
+     
+    </head>
+    <body style="background: whitesmoke">
+        
+        <h1>Práctica Grupo 9</h1>
+        <p>[[${mensajeInicial}]]</p>
+        
+        <h2>Estados</h2>
+        <a href="@{/estado/nuevo">Nuevo Estado</a>
+         
+         <h3>Información de Estados</h3>
+        <div th:if="${arrayListDeEstados !=null and !arrayListDeEstados.empty}">
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del estado</th>
+                    <th>Capital</th>
+                    <th>Población</th>
+                    <th>Tiene costa?</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+                <tr th:each="Estado : ${arrayListDeEstados}"> <!-- para cada Estado del array list de estados en el modelo que se esta implicito -->
+                    <td>[[${Estado.id}]]</td>
+                    <td>[[${Estado.nombre}]]</td>
+                    <td>[[${Estado.capital}]]</td>
+                    <td>[[${Estado.poblacion}]]</td>
+                    <td>[[${Estado.costa}]]</td>
+                    <td><a th:href="@{/eliminarEstado/}+${id}">Eliminar</a></td>
+                    <td><a th:href="@{/modificarEstado/}+${id}">Modificar</a></td>
+                    
+                </tr>            
+            </table>
+        </div>
+        
+        <div th:if="${arrayListDeEstados ==null or arrayListDeEstados.empty}">
+            <h2>No hay Estados que mostrar</h2>
+        </div>
+        
+        
+    </body>
+</html>

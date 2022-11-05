@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>        
+    </head>
+    <body>
+         <header/>  
+         <h1>Datos del Estado</h1>
+        <h2>Información de Cliente</h2>
+        <a th:href="@{/}">Regresar</a>
+        <hr/>
+        <form th:action="@{/estado/guardar}"        
+              method="post"   
+              th:object="${estado}">
+            <input type="hidden" name="id" th:field="*{id}" />   <!-- define el form que tiene como accion el metodo en el estadocontroller define el tipo de metodo y el tipo de
+            objeto que se va a crear-->
+            
+            <fieldset>
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" th:field="*{nombre}"/> <!-- define en el form el tipo de elemento que se va a guardar en el objeto Estado -->
+            </fieldset>
+            <fieldset>
+                <label for="capital">Capital</label>
+                <input type="text" name="capital" th:field="*{capital}"/>
+            </fieldset>
+            <fieldset>
+                <label for="poblacion">Población</label>
+                <input type="text" name="poblacion" th:field="*{poblacion}"/>
+            </fieldset>
+            <fieldset>
+                <label for="costa">Tiene costa?</label>
+                <input type="text" name="costa" th:field="*{costa}"/>
+            </fieldset>
+            <hr/>
+            <input type="submit" value="Guardar" name="guardar"/>      <!-- ejecuta la accion y envia el objeto con sus datos, lo mete en el array list que se ingresa en el model -->      
+        </form> 
+         <footer/>  
+    </body>
+</html>
